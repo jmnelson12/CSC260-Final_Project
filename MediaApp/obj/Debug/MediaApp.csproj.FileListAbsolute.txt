@@ -1,0 +1,10 @@
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\bin\Debug\MediaApp.exe.config
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\bin\Debug\MediaApp.exe
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\bin\Debug\MediaApp.pdb
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.csprojResolveAssemblyReference.cache
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.MovieApp.resources
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.Properties.Resources.resources
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.csproj.GenerateResource.Cache
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.csproj.CoreCompileInputs.cache
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.exe
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.pdb
