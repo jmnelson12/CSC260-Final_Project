@@ -8,3 +8,7 @@ C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\Media
 C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.csproj.CoreCompileInputs.cache
 C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.exe
 C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\obj\Debug\MediaApp.pdb
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Jacob Nelson\Desktop\Desktop\spring-2018\csc-260\HW\Final_Project\MediaApp\MediaApp\bin\Debug\System.Net.Http.Formatting.xml
