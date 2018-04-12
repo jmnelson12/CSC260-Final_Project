@@ -73,41 +73,16 @@ namespace MediaApp
             {
                 var searchValue = s_txtSearch.Text;
                 var test = new Search(searchValue);
-                //var moviePanel = new PanelComponent();
-                AddElements(s_flwContainer);
+                var moviePanel = new PanelComponent();
 
+                moviePanel.PushElement(s_flwContainer);
                 richTextBox1.Text = test.GetMovie().ToString();
             }
         }
         #endregion
 
         #region Methods
-        private void AddElements(Panel pageAddingTo)
-        {
-            var basePanel = new Panel();
-            var picMovieLogo = new PictureBox();
-            var lblMovieTitle = new Label();
-            var btnWatchLater = new Button();
-            var btnFavorite = new Button();
 
-            // Base Panel
-            basePanel.Size = new Size(178, 239);
-            basePanel.BackColor = Color.LightBlue;
-
-            // Base Panel Elements
-            picMovieLogo.Size = new Size(178, 147);
-            lblMovieTitle.Size = new Size(172, 32);
-            btnWatchLater.Size = new Size(74, 27);
-            btnFavorite.Size = new Size(74, 27);
-
-            // Add Elements To Base Panel
-            basePanel.Controls.Add(picMovieLogo);
-            basePanel.Controls.Add(lblMovieTitle);
-            basePanel.Controls.Add(btnWatchLater);
-            basePanel.Controls.Add(btnFavorite);
-
-            pageAddingTo.Controls.Add(basePanel);
-        }
         #endregion
     }
 }

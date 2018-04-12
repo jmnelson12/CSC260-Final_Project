@@ -56,10 +56,26 @@ namespace MediaApp
         #endregion
 
         #region Methods
-        public void pushContainers(string loc)
-        {
-             
-        }
+            public void PushElement(Panel pageAddingTo)
+            {
+                // Base Panel
+                this.basePanel.Size = new Size(178, 239);
+                this.basePanel.BackColor = Color.LightBlue;
+
+                // Base Panel Elements
+                this.picMovieLogo.Size = new Size(178, 147);
+                this.lblMovieTitle.Size = new Size(172, 32);
+                this.btnWatchLater.Size = new Size(74, 27);
+                this.btnFavorite.Size = new Size(74, 27);
+
+                // Add Elements To Base Panel
+                this.basePanel.Controls.Add(picMovieLogo);
+                this.basePanel.Controls.Add(lblMovieTitle);
+                this.basePanel.Controls.Add(btnWatchLater);
+                this.basePanel.Controls.Add(btnFavorite);
+
+                pageAddingTo.Controls.Add(basePanel);
+            }
         #endregion
 
     }
