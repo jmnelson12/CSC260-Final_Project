@@ -16,11 +16,7 @@ namespace MediaApp
         {
             InitializeComponent();
 
-            //Panel test = new Panel();
-            //test.BackColor = Color.Red;
-            //test.Size = new Size(178, 239);
-            //test.Location = new Point(0, 0);
-            //pnlSearch.Controls.Add(test);
+            // Load in movies from db
 
         }
 
@@ -31,37 +27,22 @@ namespace MediaApp
             switch (btn.Text.ToLower())
             {
                 case "home":
-                    pnlHome.Visible = true;
-                    pnlSearch.Visible = false;
-                    pnlWatchLater.Visible = false;
-                    pnlFavoriteMovies.Visible = false;
+                    getVisisblePanel(pnlHome, pnlSearch, pnlWatchLater, pnlFavoriteMovies);
                     break;
                 case "search":
-                    pnlSearch.Visible = true;
-                    pnlHome.Visible = false;
-                    pnlWatchLater.Visible = false;
-                    pnlFavoriteMovies.Visible = false;
+                    getVisisblePanel(pnlSearch, pnlHome, pnlWatchLater, pnlFavoriteMovies);
                     break;
                 case "watch later":
-                    pnlWatchLater.Visible = true;
-                    pnlHome.Visible = false;
-                    pnlSearch.Visible = false;
-                    pnlFavoriteMovies.Visible = false;
+                    getVisisblePanel(pnlWatchLater, pnlSearch, pnlHome, pnlFavoriteMovies);
                     break;
                 case "favorite movies":
-                    pnlFavoriteMovies.Visible = true;
-                    pnlHome.Visible = false;
-                    pnlSearch.Visible = false;
-                    pnlWatchLater.Visible = false;
+                    getVisisblePanel(pnlFavoriteMovies, pnlSearch, pnlWatchLater, pnlHome);
                     break;
             }
         }
         private void lblHome_Click(object sender, EventArgs e)
         {
-            pnlHome.Visible = true;
-            pnlSearch.Visible = false;
-            pnlWatchLater.Visible = false;
-            pnlFavoriteMovies.Visible = false;
+            getVisisblePanel(pnlHome, pnlSearch, pnlWatchLater, pnlFavoriteMovies);
         }
 
         #endregion
@@ -82,6 +63,15 @@ namespace MediaApp
         #endregion
 
         #region Methods
+
+        // Navigation Function
+        private void getVisisblePanel(Panel visiblePanel, Panel nvPanelOne, Panel nvPanelTwo, Panel nvPanelThree)
+        {
+            visiblePanel.Visible = true;
+            nvPanelOne.Visible = false;
+            nvPanelTwo.Visible = false;
+            nvPanelThree.Visible = false;
+        }
 
         #endregion
     }

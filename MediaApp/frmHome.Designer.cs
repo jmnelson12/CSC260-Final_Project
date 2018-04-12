@@ -37,20 +37,15 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.pnlNavigation = new System.Windows.Forms.Panel();
             this.pnlHome = new System.Windows.Forms.Panel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.lblHomeTest = new System.Windows.Forms.Label();
             this.pnlSearch = new System.Windows.Forms.Panel();
-            this.s_txtSearch = new System.Windows.Forms.TextBox();
-            this.pnlWatchLater = new System.Windows.Forms.Panel();
-            this.lblWatchLater = new System.Windows.Forms.Label();
-            this.pnlFavoriteMovies = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.s_flwContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -66,12 +61,15 @@
             this.button8 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.s_txtSearch = new System.Windows.Forms.TextBox();
+            this.pnlWatchLater = new System.Windows.Forms.Panel();
+            this.lblWatchLater = new System.Windows.Forms.Label();
+            this.pnlFavoriteMovies = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.pnlNavigation.SuspendLayout();
             this.pnlHome.SuspendLayout();
             this.pnlSearch.SuspendLayout();
-            this.pnlWatchLater.SuspendLayout();
-            this.pnlFavoriteMovies.SuspendLayout();
             this.s_flwContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -81,6 +79,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.pnlWatchLater.SuspendLayout();
+            this.pnlFavoriteMovies.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -198,6 +198,14 @@
             this.pnlHome.Size = new System.Drawing.Size(622, 522);
             this.pnlHome.TabIndex = 3;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(20, 20);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(549, 464);
+            this.richTextBox1.TabIndex = 10;
+            this.richTextBox1.Text = "";
+            // 
             // lblHomeTest
             // 
             this.lblHomeTest.Location = new System.Drawing.Point(4, 492);
@@ -217,52 +225,6 @@
             this.pnlSearch.TabIndex = 5;
             this.pnlSearch.Visible = false;
             // 
-            // s_txtSearch
-            // 
-            this.s_txtSearch.BackColor = System.Drawing.SystemColors.Control;
-            this.s_txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.s_txtSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.s_txtSearch.Location = new System.Drawing.Point(124, 37);
-            this.s_txtSearch.Multiline = true;
-            this.s_txtSearch.Name = "s_txtSearch";
-            this.s_txtSearch.Size = new System.Drawing.Size(349, 29);
-            this.s_txtSearch.TabIndex = 6;
-            this.s_txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.s_txtSearch_KeyDown);
-            // 
-            // pnlWatchLater
-            // 
-            this.pnlWatchLater.Controls.Add(this.lblWatchLater);
-            this.pnlWatchLater.Location = new System.Drawing.Point(168, 0);
-            this.pnlWatchLater.Name = "pnlWatchLater";
-            this.pnlWatchLater.Size = new System.Drawing.Size(527, 408);
-            this.pnlWatchLater.TabIndex = 6;
-            this.pnlWatchLater.Visible = false;
-            // 
-            // lblWatchLater
-            // 
-            this.lblWatchLater.Location = new System.Drawing.Point(384, 352);
-            this.lblWatchLater.Name = "lblWatchLater";
-            this.lblWatchLater.Size = new System.Drawing.Size(140, 40);
-            this.lblWatchLater.TabIndex = 5;
-            this.lblWatchLater.Text = "Watch Later";
-            // 
-            // pnlFavoriteMovies
-            // 
-            this.pnlFavoriteMovies.Controls.Add(this.label1);
-            this.pnlFavoriteMovies.Location = new System.Drawing.Point(169, 0);
-            this.pnlFavoriteMovies.Name = "pnlFavoriteMovies";
-            this.pnlFavoriteMovies.Size = new System.Drawing.Size(551, 449);
-            this.pnlFavoriteMovies.TabIndex = 7;
-            this.pnlFavoriteMovies.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(379, 411);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 29);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Favorite Movies";
-            // 
             // s_flwContainer
             // 
             this.s_flwContainer.AutoScroll = true;
@@ -270,11 +232,10 @@
             this.s_flwContainer.Controls.Add(this.panel2);
             this.s_flwContainer.Controls.Add(this.panel4);
             this.s_flwContainer.Controls.Add(this.panel5);
-            this.s_flwContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.s_flwContainer.Location = new System.Drawing.Point(0, 72);
+            this.s_flwContainer.Location = new System.Drawing.Point(0, 55);
             this.s_flwContainer.Name = "s_flwContainer";
             this.s_flwContainer.Padding = new System.Windows.Forms.Padding(10);
-            this.s_flwContainer.Size = new System.Drawing.Size(637, 450);
+            this.s_flwContainer.Size = new System.Drawing.Size(637, 467);
             this.s_flwContainer.TabIndex = 9;
             // 
             // panel1
@@ -328,14 +289,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(178, 147);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(20, 20);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(549, 464);
-            this.richTextBox1.TabIndex = 10;
-            this.richTextBox1.Text = "";
             // 
             // panel2
             // 
@@ -493,6 +446,52 @@
             this.pictureBox4.TabIndex = 0;
             this.pictureBox4.TabStop = false;
             // 
+            // s_txtSearch
+            // 
+            this.s_txtSearch.BackColor = System.Drawing.SystemColors.Control;
+            this.s_txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.s_txtSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.s_txtSearch.Location = new System.Drawing.Point(124, 27);
+            this.s_txtSearch.Multiline = true;
+            this.s_txtSearch.Name = "s_txtSearch";
+            this.s_txtSearch.Size = new System.Drawing.Size(349, 29);
+            this.s_txtSearch.TabIndex = 6;
+            this.s_txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.s_txtSearch_KeyDown);
+            // 
+            // pnlWatchLater
+            // 
+            this.pnlWatchLater.Controls.Add(this.lblWatchLater);
+            this.pnlWatchLater.Location = new System.Drawing.Point(168, 0);
+            this.pnlWatchLater.Name = "pnlWatchLater";
+            this.pnlWatchLater.Size = new System.Drawing.Size(527, 408);
+            this.pnlWatchLater.TabIndex = 6;
+            this.pnlWatchLater.Visible = false;
+            // 
+            // lblWatchLater
+            // 
+            this.lblWatchLater.Location = new System.Drawing.Point(384, 352);
+            this.lblWatchLater.Name = "lblWatchLater";
+            this.lblWatchLater.Size = new System.Drawing.Size(140, 40);
+            this.lblWatchLater.TabIndex = 5;
+            this.lblWatchLater.Text = "Watch Later";
+            // 
+            // pnlFavoriteMovies
+            // 
+            this.pnlFavoriteMovies.Controls.Add(this.label1);
+            this.pnlFavoriteMovies.Location = new System.Drawing.Point(169, 0);
+            this.pnlFavoriteMovies.Name = "pnlFavoriteMovies";
+            this.pnlFavoriteMovies.Size = new System.Drawing.Size(551, 449);
+            this.pnlFavoriteMovies.TabIndex = 7;
+            this.pnlFavoriteMovies.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(379, 411);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(169, 29);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Favorite Movies";
+            // 
             // MovieApp
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -517,8 +516,6 @@
             this.pnlHome.ResumeLayout(false);
             this.pnlSearch.ResumeLayout(false);
             this.pnlSearch.PerformLayout();
-            this.pnlWatchLater.ResumeLayout(false);
-            this.pnlFavoriteMovies.ResumeLayout(false);
             this.s_flwContainer.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -528,6 +525,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.pnlWatchLater.ResumeLayout(false);
+            this.pnlFavoriteMovies.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
