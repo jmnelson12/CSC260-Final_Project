@@ -16,38 +16,38 @@ namespace MediaApp
         private string _searchURL = "https://api.themoviedb.org/3/search/movie?api_key=" + _apiKey;
 
         #region Constructors
-        public Search()
-        {
-            this.SearchTerm = "";
-        }
+            public Search()
+            {
+                this.SearchTerm = "";
+            }
 
-        public Search(string term)
-        {
-            this.SearchTerm = term;
-        }
+            public Search(string term)
+            {
+                this.SearchTerm = term;
+            }
         #endregion
 
         #region Methods
-        public object GetMovie()
-        {
-            try
+            public object GetMovie()
             {
-                HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(_searchURL);
+                try
+                {
+                    HttpClient client = new HttpClient();
+                    client.BaseAddress = new Uri(_searchURL);
 
-                _searchURL += "&query=" + this.SearchTerm;
+                    _searchURL += "&query=" + this.SearchTerm;
 
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var response = client.GetStringAsync(new Uri(_searchURL)).Result;
-                var releases = JRaw.Parse(response);
-                return releases;
+                    var response = client.GetStringAsync(new Uri(_searchURL)).Result;
+                    var releases = JRaw.Parse(response);
+                    return releases;
+                }
+                catch (Exception e)
+                {
+                    return e.ToString();
+                }
             }
-            catch (Exception e)
-            {
-                return e.ToString();
-            }
-        }
         #endregion
     }
 }

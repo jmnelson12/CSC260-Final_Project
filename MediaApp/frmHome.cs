@@ -15,6 +15,13 @@ namespace MediaApp
         public MovieApp()
         {
             InitializeComponent();
+
+            //Panel test = new Panel();
+            //test.BackColor = Color.Red;
+            //test.Size = new Size(178, 239);
+            //test.Location = new Point(0, 0);
+            //pnlSearch.Controls.Add(test);
+
         }
 
         #region Navigation
@@ -66,10 +73,16 @@ namespace MediaApp
             {
                 var searchValue = s_txtSearch.Text;
                 var test = new Search(searchValue);
+                var moviePanel = new PanelComponent();
+
+
                 richTextBox1.Text = test.GetMovie().ToString();
             }
         }
         #endregion
 
+        #region Methods
+
+        #endregion
     }
 }
