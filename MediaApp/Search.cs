@@ -11,43 +11,66 @@ namespace MediaApp
 {
     class Search
     {
-        public string SearchTerm { get; set; }
-        private const string _apiKey = "e7f452352c2360b97be05ea336f105f4";
-        private string _searchURL = "https://api.themoviedb.org/3/search/movie?api_key=" + _apiKey;
+        public string searchterm { get; set; }
+        private const string _apikey = "e7f452352c2360b97be05ea336f105f4";
+        private const string _searchurl = "https://api.themoviedb.org/3/search/movie?api_key=" + _apikey;
+        static HttpClient client = new HttpClient();
 
-        #region Constructors
-            public Search()
-            {
-                this.SearchTerm = "";
-            }
+        public int total_results { get; set; }
+        public object results { get; set; }
 
-            public Search(string term)
-            {
-                this.SearchTerm = term;
-            }
+        #region constructors
+        public Search()
+        {
+            this.searchterm = "";
+            RunAsync("").GetAwaiter().GetResult();
+        }
+
+        public Search(string term)
+        {
+            this.searchterm = term;
+            RunAsync(term).GetAwaiter().GetResult();
+        }
         #endregion
 
         #region Methods
-            public object GetMovie()
+        public async Task RunAsync(string searchTerm)
+        {
+            client.BaseAddress = new Uri("https://api.themoviedb.org/3/search/movie?api_key=");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            try
             {
-                try
-                {
-                    HttpClient client = new HttpClient();
-                    client.BaseAddress = new Uri(_searchURL);
-
-                    _searchURL += "&query=" + this.SearchTerm;
-
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                    var response = client.GetStringAsync(new Uri(_searchURL)).Result;
-                    var releases = JRaw.Parse(response);
-                    return releases;
-                }
-                catch (Exception e)
-                {
-                    return e.ToString();
-                }
+                // get the products
+                Product product = await GetProductAsync(_searchurl + "&query=" + searchterm);
+                GetMovie(product);
             }
+            catch (Exception e)
+            {
+                // Add Error Box
+            }
+        }
+
+        static async Task<Product> GetProductAsync(string path)
+        {
+            Product product = null;
+            HttpResponseMessage response = client.GetAsync(path).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                product = await response.Content.ReadAsAsync<Product>();
+            }
+            return product;
+        }
+
+        public object GetMovie(Product product)
+        {
+            this.total_results = product.Total_Results;
+            this.results = product.Results;
+
+            return this.total_results + "\n" + this.results;
+        }
         #endregion
     }
 }

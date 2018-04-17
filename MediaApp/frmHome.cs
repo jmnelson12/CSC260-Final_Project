@@ -26,23 +26,20 @@ namespace MediaApp
             Button btn = (Button)sender;
             switch (btn.Text.ToLower())
             {
-                case "home":
-                    getVisisblePanel(pnlHome, pnlSearch, pnlWatchLater, pnlFavoriteMovies);
-                    break;
                 case "search":
-                    getVisisblePanel(pnlSearch, pnlHome, pnlWatchLater, pnlFavoriteMovies);
+                    getVisisblePanel(pnlSearch, pnlWatchLater, pnlFavoriteMovies);
                     break;
                 case "watch later":
-                    getVisisblePanel(pnlWatchLater, pnlSearch, pnlHome, pnlFavoriteMovies);
+                    getVisisblePanel(pnlWatchLater, pnlSearch, pnlFavoriteMovies);
                     break;
                 case "favorite movies":
-                    getVisisblePanel(pnlFavoriteMovies, pnlSearch, pnlWatchLater, pnlHome);
+                    getVisisblePanel(pnlFavoriteMovies, pnlSearch, pnlWatchLater);
                     break;
             }
         }
         private void lblHome_Click(object sender, EventArgs e)
         {
-            getVisisblePanel(pnlHome, pnlSearch, pnlWatchLater, pnlFavoriteMovies);
+            getVisisblePanel(pnlSearch, pnlWatchLater, pnlFavoriteMovies);
         }
 
         #endregion
@@ -53,11 +50,14 @@ namespace MediaApp
             if (e.KeyData == Keys.Enter)
             {
                 var searchValue = s_txtSearch.Text;
-                var test = new Search(searchValue);
-                var moviePanel = new PanelComponent();
+                //var test = new Movie();
+                var movies = new Search(searchValue);
 
+                // create panels
+                var moviePanel = new PanelComponent("title", "https://orig00.deviantart.net/d838/f/2011/350/c/2/random_pikachu_by_ieaka-d4jbdkh.png");                
                 moviePanel.PushElement(s_flwContainer);
-                richTextBox1.Text = test.GetMovie().ToString();
+
+                richTextBox1.Text = movies.total_results + "\n\n" + movies.results;
             }
         }
         #endregion
@@ -65,12 +65,11 @@ namespace MediaApp
         #region Methods
 
         // Navigation Function
-        private void getVisisblePanel(Panel visiblePanel, Panel nvPanelOne, Panel nvPanelTwo, Panel nvPanelThree)
+        private void getVisisblePanel(Panel visiblePanel, Panel nvPanelOne, Panel nvPanelTwo)
         {
             visiblePanel.Visible = true;
             nvPanelOne.Visible = false;
             nvPanelTwo.Visible = false;
-            nvPanelThree.Visible = false;
         }
 
         #endregion
