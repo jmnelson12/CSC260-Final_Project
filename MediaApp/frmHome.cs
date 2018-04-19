@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,14 +51,23 @@ namespace MediaApp
             if (e.KeyData == Keys.Enter)
             {
                 var searchValue = s_txtSearch.Text;
-                //var test = new Movie();
-                var movies = new Search(searchValue);
+                var searchMovie = new Search(searchValue);
 
-                // create panels
-                var moviePanel = new PanelComponent("title", "https://orig00.deviantart.net/d838/f/2011/350/c/2/random_pikachu_by_ieaka-d4jbdkh.png");                
-                moviePanel.PushElement(s_flwContainer);
+                var moviePanel = new PanelComponent("", "https://orig00.deviantart.net/d838/f/2011/350/c/2/random_pikachu_by_ieaka-d4jbdkh.png");
+                JObject eachMovie;
+                Movie movie;
+                
 
-                richTextBox1.Text = movies.total_results + "\n\n" + movies.results;
+                int test = searchMovie.results.Count;
+                for (var i = 0; i < test; i++)
+                {
+                    eachMovie = searchMovie.results[i] as JObject;
+                    movie = eachMovie.ToObject<Movie>();
+
+                    // create panels
+                    moviePanel = new PanelComponent(movie.Original_Title, "http://image.tmdb.org/t/p/w185/" + movie.Poster_Path);
+                    moviePanel.PushElement(s_flwContainer);
+                }                                        
             }
         }
         #endregion

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace MediaApp
 {
-    public class Product
+    class Movie
     {
-        public int Total_Results { get; set; }
-        public List<object> Results { get; set; }
+        public string Id { get; set; }
+        public string Original_Title { get; set; }
+        public string Poster_Path { get; set; }
     }
 }

@@ -229,6 +229,7 @@
             this.richTextBox1.Size = new System.Drawing.Size(549, 464);
             this.richTextBox1.TabIndex = 11;
             this.richTextBox1.Text = "";
+            this.richTextBox1.Visible = false;
             // 
             // s_txtSearch
             // 
@@ -281,10 +282,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(808, 522);
+            this.Controls.Add(this.pnlSearch);
             this.Controls.Add(this.pnlWatchLater);
             this.Controls.Add(this.pnlFavoriteMovies);
             this.Controls.Add(this.pnlNavigation);
-            this.Controls.Add(this.pnlSearch);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

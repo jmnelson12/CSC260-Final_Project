@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace MediaApp
@@ -17,7 +18,7 @@ namespace MediaApp
         static HttpClient client = new HttpClient();
 
         public int total_results { get; set; }
-        public object results { get; set; }
+        public List<object> results;
 
         #region constructors
         public Search()
@@ -45,6 +46,7 @@ namespace MediaApp
             {
                 // get the products
                 Product product = await GetProductAsync(_searchurl + "&query=" + searchterm);
+              
                 GetMovie(product);
             }
             catch (Exception e)
@@ -57,6 +59,7 @@ namespace MediaApp
         {
             Product product = null;
             HttpResponseMessage response = client.GetAsync(path).Result;
+
             if (response.IsSuccessStatusCode)
             {
                 product = await response.Content.ReadAsAsync<Product>();
@@ -64,12 +67,10 @@ namespace MediaApp
             return product;
         }
 
-        public object GetMovie(Product product)
+        public void GetMovie(Product product)
         {
             this.total_results = product.Total_Results;
             this.results = product.Results;
-
-            return this.total_results + "\n" + this.results;
         }
         #endregion
     }
