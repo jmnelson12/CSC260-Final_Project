@@ -42,11 +42,17 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.s_txtSearch = new System.Windows.Forms.TextBox();
-            this.pnlWatchLater = new System.Windows.Forms.Panel();
+            this.wl_flwContainer = new System.Windows.Forms.Panel();
             this.lblWatchLater = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlFavoriteMovies = new System.Windows.Forms.Panel();
+            this.f_flwContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.pnlNavigation.SuspendLayout();
@@ -54,7 +60,10 @@
             this.s_flwContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnlWatchLater.SuspendLayout();
+            this.wl_flwContainer.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlFavoriteMovies.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -161,11 +170,10 @@
             // 
             this.s_flwContainer.AutoScroll = true;
             this.s_flwContainer.Controls.Add(this.panel1);
-            this.s_flwContainer.Controls.Add(this.richTextBox1);
-            this.s_flwContainer.Location = new System.Drawing.Point(0, 55);
+            this.s_flwContainer.Location = new System.Drawing.Point(0, 69);
             this.s_flwContainer.Name = "s_flwContainer";
             this.s_flwContainer.Padding = new System.Windows.Forms.Padding(10);
-            this.s_flwContainer.Size = new System.Drawing.Size(637, 467);
+            this.s_flwContainer.Size = new System.Drawing.Size(637, 453);
             this.s_flwContainer.TabIndex = 9;
             // 
             // panel1
@@ -203,11 +211,12 @@
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(3, 154);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 150);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(172, 32);
+            this.label3.Size = new System.Drawing.Size(172, 46);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Fight Club";
+            this.label3.Text = "Fight Club Blah Blah";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox1
@@ -222,15 +231,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(13, 268);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(549, 464);
-            this.richTextBox1.TabIndex = 11;
-            this.richTextBox1.Text = "";
-            this.richTextBox1.Visible = false;
-            // 
             // s_txtSearch
             // 
             this.s_txtSearch.BackColor = System.Drawing.SystemColors.Control;
@@ -243,34 +243,108 @@
             this.s_txtSearch.TabIndex = 6;
             this.s_txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.s_txtSearch_KeyDown);
             // 
-            // pnlWatchLater
+            // wl_flwContainer
             // 
-            this.pnlWatchLater.Controls.Add(this.lblWatchLater);
-            this.pnlWatchLater.Location = new System.Drawing.Point(168, 0);
-            this.pnlWatchLater.Name = "pnlWatchLater";
-            this.pnlWatchLater.Size = new System.Drawing.Size(602, 473);
-            this.pnlWatchLater.TabIndex = 6;
-            this.pnlWatchLater.Visible = false;
+            this.wl_flwContainer.Controls.Add(this.lblWatchLater);
+            this.wl_flwContainer.Controls.Add(this.flowLayoutPanel1);
+            this.wl_flwContainer.Location = new System.Drawing.Point(168, 0);
+            this.wl_flwContainer.Name = "wl_flwContainer";
+            this.wl_flwContainer.Size = new System.Drawing.Size(617, 519);
+            this.wl_flwContainer.TabIndex = 6;
+            this.wl_flwContainer.Visible = false;
             // 
             // lblWatchLater
             // 
-            this.lblWatchLater.Location = new System.Drawing.Point(459, 420);
+            this.lblWatchLater.Location = new System.Drawing.Point(238, 9);
             this.lblWatchLater.Name = "lblWatchLater";
-            this.lblWatchLater.Size = new System.Drawing.Size(140, 40);
+            this.lblWatchLater.Size = new System.Drawing.Size(140, 26);
             this.lblWatchLater.TabIndex = 5;
             this.lblWatchLater.Text = "Watch Later";
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.panel2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 63);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(6);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(608, 449);
+            this.flowLayoutPanel1.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Location = new System.Drawing.Point(14, 14);
+            this.panel2.Margin = new System.Windows.Forms.Padding(8);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(178, 239);
+            this.panel2.TabIndex = 9;
+            this.panel2.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(92, 199);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(74, 27);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Fav";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button4.Location = new System.Drawing.Point(12, 199);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(74, 27);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "WL";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 150);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(172, 46);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Fight Club Blah Blah";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.InitialImage = null;
+            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(178, 147);
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
             // pnlFavoriteMovies
             // 
+            this.pnlFavoriteMovies.Controls.Add(this.f_flwContainer);
             this.pnlFavoriteMovies.Controls.Add(this.label1);
             this.pnlFavoriteMovies.Location = new System.Drawing.Point(169, 0);
             this.pnlFavoriteMovies.Name = "pnlFavoriteMovies";
-            this.pnlFavoriteMovies.Size = new System.Drawing.Size(606, 510);
+            this.pnlFavoriteMovies.Size = new System.Drawing.Size(616, 522);
             this.pnlFavoriteMovies.TabIndex = 7;
+            // 
+            // f_flwContainer
+            // 
+            this.f_flwContainer.Location = new System.Drawing.Point(5, 62);
+            this.f_flwContainer.Name = "f_flwContainer";
+            this.f_flwContainer.Size = new System.Drawing.Size(608, 454);
+            this.f_flwContainer.TabIndex = 6;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(432, 476);
+            this.label1.Location = new System.Drawing.Point(208, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 29);
             this.label1.TabIndex = 5;
@@ -282,10 +356,10 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(808, 522);
-            this.Controls.Add(this.pnlSearch);
-            this.Controls.Add(this.pnlWatchLater);
-            this.Controls.Add(this.pnlFavoriteMovies);
             this.Controls.Add(this.pnlNavigation);
+            this.Controls.Add(this.wl_flwContainer);
+            this.Controls.Add(this.pnlFavoriteMovies);
+            this.Controls.Add(this.pnlSearch);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -301,7 +375,10 @@
             this.s_flwContainer.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.pnlWatchLater.ResumeLayout(false);
+            this.wl_flwContainer.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlFavoriteMovies.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -315,7 +392,7 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel pnlNavigation;
         private System.Windows.Forms.Panel pnlSearch;
-        private System.Windows.Forms.Panel pnlWatchLater;
+        private System.Windows.Forms.Panel wl_flwContainer;
         private System.Windows.Forms.Panel pnlFavoriteMovies;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblWatchLater;
@@ -326,7 +403,13 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.FlowLayoutPanel f_flwContainer;
     }
 }
 

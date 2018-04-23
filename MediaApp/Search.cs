@@ -13,8 +13,8 @@ namespace MediaApp
     class Search
     {
         public string searchterm { get; set; }
-        private const string _apikey = "e7f452352c2360b97be05ea336f105f4";
-        private const string _searchurl = "https://api.themoviedb.org/3/search/movie?api_key=" + _apikey;
+        private const string _APIKEY = "e7f452352c2360b97be05ea336f105f4";
+        private const string _SEARCHURL = "https://api.themoviedb.org/3/search/movie?api_key=" + _APIKEY;
         static HttpClient client = new HttpClient();
 
         public int total_results { get; set; }
@@ -35,6 +35,8 @@ namespace MediaApp
         #endregion
 
         #region Methods
+
+        // Run Task
         public async Task RunAsync(string searchTerm)
         {
             client.BaseAddress = new Uri("https://api.themoviedb.org/3/search/movie?api_key=");
@@ -45,8 +47,7 @@ namespace MediaApp
             try
             {
                 // get the products
-                Product product = await GetProductAsync(_searchurl + "&query=" + searchterm);
-              
+                Product product = await GetProductAsync(_SEARCHURL + "&query=" + searchterm);        
                 GetMovie(product);
             }
             catch (Exception e)
@@ -55,6 +56,7 @@ namespace MediaApp
             }
         }
 
+        // Call to Api
         static async Task<Product> GetProductAsync(string path)
         {
             Product product = null;
@@ -67,11 +69,13 @@ namespace MediaApp
             return product;
         }
 
+        // Set Values
         public void GetMovie(Product product)
         {
             this.total_results = product.Total_Results;
             this.results = product.Results;
         }
+     
         #endregion
     }
 }
