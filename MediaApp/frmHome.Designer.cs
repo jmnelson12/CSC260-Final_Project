@@ -43,9 +43,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.s_txtSearch = new System.Windows.Forms.TextBox();
-            this.wl_flwContainer = new System.Windows.Forms.Panel();
+            this.pnlWatchLater = new System.Windows.Forms.Panel();
             this.lblWatchLater = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.wl_flwContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -60,8 +60,8 @@
             this.s_flwContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlWatchLater.SuspendLayout();
             this.wl_flwContainer.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnlFavoriteMovies.SuspendLayout();
@@ -243,15 +243,15 @@
             this.s_txtSearch.TabIndex = 6;
             this.s_txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.s_txtSearch_KeyDown);
             // 
-            // wl_flwContainer
+            // pnlWatchLater
             // 
-            this.wl_flwContainer.Controls.Add(this.lblWatchLater);
-            this.wl_flwContainer.Controls.Add(this.flowLayoutPanel1);
-            this.wl_flwContainer.Location = new System.Drawing.Point(168, 0);
-            this.wl_flwContainer.Name = "wl_flwContainer";
-            this.wl_flwContainer.Size = new System.Drawing.Size(617, 519);
-            this.wl_flwContainer.TabIndex = 6;
-            this.wl_flwContainer.Visible = false;
+            this.pnlWatchLater.Controls.Add(this.lblWatchLater);
+            this.pnlWatchLater.Controls.Add(this.wl_flwContainer);
+            this.pnlWatchLater.Location = new System.Drawing.Point(168, 0);
+            this.pnlWatchLater.Name = "pnlWatchLater";
+            this.pnlWatchLater.Size = new System.Drawing.Size(617, 519);
+            this.pnlWatchLater.TabIndex = 6;
+            this.pnlWatchLater.Visible = false;
             // 
             // lblWatchLater
             // 
@@ -261,15 +261,15 @@
             this.lblWatchLater.TabIndex = 5;
             this.lblWatchLater.Text = "Watch Later";
             // 
-            // flowLayoutPanel1
+            // wl_flwContainer
             // 
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 63);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(6);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(608, 449);
-            this.flowLayoutPanel1.TabIndex = 6;
+            this.wl_flwContainer.AutoScroll = true;
+            this.wl_flwContainer.Controls.Add(this.panel2);
+            this.wl_flwContainer.Location = new System.Drawing.Point(6, 63);
+            this.wl_flwContainer.Name = "wl_flwContainer";
+            this.wl_flwContainer.Padding = new System.Windows.Forms.Padding(6);
+            this.wl_flwContainer.Size = new System.Drawing.Size(608, 449);
+            this.wl_flwContainer.TabIndex = 6;
             // 
             // panel2
             // 
@@ -357,9 +357,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(808, 522);
             this.Controls.Add(this.pnlNavigation);
-            this.Controls.Add(this.wl_flwContainer);
             this.Controls.Add(this.pnlFavoriteMovies);
             this.Controls.Add(this.pnlSearch);
+            this.Controls.Add(this.pnlWatchLater);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -375,8 +375,8 @@
             this.s_flwContainer.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlWatchLater.ResumeLayout(false);
             this.wl_flwContainer.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnlFavoriteMovies.ResumeLayout(false);
@@ -392,7 +392,7 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Panel pnlNavigation;
         private System.Windows.Forms.Panel pnlSearch;
-        private System.Windows.Forms.Panel wl_flwContainer;
+        private System.Windows.Forms.Panel pnlWatchLater;
         private System.Windows.Forms.Panel pnlFavoriteMovies;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblWatchLater;
@@ -403,7 +403,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel wl_flwContainer;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;

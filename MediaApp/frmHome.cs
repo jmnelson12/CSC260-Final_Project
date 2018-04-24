@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace MediaApp
 {
     public partial class MovieApp : Form
     {
-        string MyConnectionString = "Server=localhost;Database=csc260-finalproject;Uid=root;persistsecurityinfo=True;SslMode=none";
+        private string MyConnectionString = "Server=localhost;Database=csc260-finalproject;Uid=root;persistsecurityinfo=True;SslMode=none";
 
         public MovieApp()
         {
@@ -35,20 +36,20 @@ namespace MediaApp
             switch (btn.Text.ToLower())
             {
                 case "search":
-                    getVisisblePanel(pnlSearch, wl_flwContainer, pnlFavoriteMovies);
+                    getVisisblePanel(pnlSearch, pnlWatchLater, pnlFavoriteMovies);
                     s_txtSearch.Focus();
                     break;
                 case "watch later":
-                    getVisisblePanel(wl_flwContainer, pnlSearch, pnlFavoriteMovies);
+                    getVisisblePanel(pnlWatchLater, pnlSearch, pnlFavoriteMovies);
                     break;
                 case "favorite movies":
-                    getVisisblePanel(pnlFavoriteMovies, pnlSearch, wl_flwContainer);
+                    getVisisblePanel(pnlFavoriteMovies, pnlSearch, pnlWatchLater);
                     break;
             }
         }
         private void lblHome_Click(object sender, EventArgs e)
         {
-            getVisisblePanel(pnlSearch, wl_flwContainer, pnlFavoriteMovies);
+            getVisisblePanel(pnlSearch, pnlWatchLater, pnlFavoriteMovies);
         }
 
         #endregion
@@ -66,16 +67,18 @@ namespace MediaApp
 
                 JObject eachMovie;
                 Movie movie;
-                                
+                               
+                // Loop through results
                 for (var i = 0; i < totalResults; i++)
                 {
                     eachMovie = searchMovie.results[i] as JObject;
                     movie = eachMovie.ToObject<Movie>();
 
                     // create panels
-                    var moviePanel = new PanelComponent(movie.Original_Title, BASEIMAGEURL + movie.Poster_Path);
-                    moviePanel.PushElement(s_flwContainer);
+                    var moviePanel = new PanelComponent(movie.Original_Title, BASEIMAGEURL + movie.Poster_Path);                    
+                    moviePanel.PushElement(s_flwContainer);               
                 }
+                addBtnFunctionality();
                 searchMovie = null;
                 searchValue = null;
             }            
@@ -83,6 +86,39 @@ namespace MediaApp
         #endregion
 
         #region Methods
+        private void addBtnFunctionality() {
+            foreach (Control c in s_flwContainer.Controls) {
+                if (c.Name == "basePanel") {
+                    //var wl_MovieTitle = c.GetChildAtPoint(new Point(3, 154)).Text;
+                    //var wl_MovieImage = c.GetChildAtPoint(new Point(1, 1)).Name;
+                    var wl_button = c.GetChildAtPoint(new Point(13, 200));
+                    var fav_button = c.GetChildAtPoint(new Point(93, 200));
+
+                    wl_button.Click += new EventHandler(WatchLater_Click);
+                    fav_button.Click += new EventHandler(Favorite_Click);
+                }
+            }
+        }
+
+        private void Favorite_Click(object sender, EventArgs e) {
+            Button button = (Button)sender;
+            var wl_MovieTitle = button.Parent.GetChildAtPoint(new Point(3, 154)).Text;
+            var wl_MovieImage = button.Parent.GetChildAtPoint(new Point(1, 1)).Name;
+
+            var moviePanel = new PanelComponent(wl_MovieTitle, wl_MovieImage);
+            moviePanel.PushElement(f_flwContainer);
+        }
+
+        private void WatchLater_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            var wl_MovieTitle = button.Parent.GetChildAtPoint(new Point(3, 154)).Text;
+            var wl_MovieImage = button.Parent.GetChildAtPoint(new Point(1, 1)).Name;
+
+            var moviePanel = new PanelComponent(wl_MovieTitle, wl_MovieImage);
+            moviePanel.PushElement(wl_flwContainer);
+        }
+
 
         // Navigation Function
         private void getVisisblePanel(Panel visiblePanel, Panel nvPanelOne, Panel nvPanelTwo)
@@ -147,6 +183,7 @@ namespace MediaApp
                 }
             }
         }
+
         #endregion
     }
 }

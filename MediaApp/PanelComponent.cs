@@ -29,6 +29,7 @@ namespace MediaApp
             // Base Panel
             this.basePanel.Size = new Size(178, 239);
             this.basePanel.BorderStyle = BorderStyle.FixedSingle;
+            this.basePanel.Name = "basePanel";
 
             // Movie Logo element
             this.picMovieLogo.Size = new Size(178, 147);
@@ -48,8 +49,8 @@ namespace MediaApp
             this.btnWatchLater.Size = new Size(74, 27);
             this.btnWatchLater.Location = new Point(12, 199);
             this.btnWatchLater.Text = "WL";
-            this.btnWatchLater.BackColor = Color.LightGray;
-            this.btnWatchLater.Click += new EventHandler(WatchLater_Click);
+            this.btnWatchLater.BackColor = Color.LightGray;            
+            //this.btnWatchLater.Click += new EventHandler(WatchLater_Click);
 
             // Favorite Button
             this.btnFavorite.Size = new Size(74, 27);
@@ -71,17 +72,17 @@ namespace MediaApp
             pageAddingTo.Controls.Add(this.basePanel);
         }
 
-        private void WatchLater_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            var wl_MovieTitle = button.Parent.GetChildAtPoint(new Point(3, 154)).Text;
-            var wl_MovieImage = button.Parent.GetChildAtPoint(new Point(1, 1)).Name;
+        //private void WatchLater_Click(object sender, EventArgs e)
+        //{
+        //    Button button = (Button)sender;
+        //    var wl_MovieTitle = button.Parent.GetChildAtPoint(new Point(3, 154)).Text;
+        //    var wl_MovieImage = button.Parent.GetChildAtPoint(new Point(1, 1)).Name;
 
-            var moviePanel = new PanelComponent(wl_MovieTitle, wl_MovieImage);
-            //moviePanel.PushElement();
+        //    var moviePanel = new PanelComponent(wl_MovieTitle, wl_MovieImage);
+        //    //moviePanel.PushElement();
 
-            Debug.WriteLine(wl_MovieImage);
-        }
+        //    Debug.WriteLine(wl_MovieImage);
+        //}
         #endregion
     }
 }
