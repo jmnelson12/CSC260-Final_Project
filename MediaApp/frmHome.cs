@@ -22,11 +22,9 @@ namespace MediaApp
             InitializeComponent();
 
             // Load in movies from db
-            //LoadWatchLaterData();
-            //LoadInData("watchlater"); CREATE SINGULAR FUNCTION
-            //LoadInData("favorite");
-
-            //InsertData(); MAKE SINGULAR FUNCTION
+            LoadWatchLaterData("watchlaterdb");
+            // LoadInData("watchlater"); CREATE SINGULAR FUNCTION
+            // LoadInData("favorite");
         }
 
         #region Navigation
@@ -76,7 +74,7 @@ namespace MediaApp
 
                     // create panels
                     var moviePanel = new PanelComponent(movie.Original_Title, BASEIMAGEURL + movie.Poster_Path);                    
-                    moviePanel.PushElement(s_flwContainer);               
+                    moviePanel.PushElement(s_flwContainer);                              
                 }
                 addBtnFunctionality();
                 searchMovie = null;
@@ -86,11 +84,11 @@ namespace MediaApp
         #endregion
 
         #region Methods
+
+        // Add functionality to dynamically created buttons
         private void addBtnFunctionality() {
             foreach (Control c in s_flwContainer.Controls) {
                 if (c.Name == "basePanel") {
-                    //var wl_MovieTitle = c.GetChildAtPoint(new Point(3, 154)).Text;
-                    //var wl_MovieImage = c.GetChildAtPoint(new Point(1, 1)).Name;
                     var wl_button = c.GetChildAtPoint(new Point(13, 200));
                     var fav_button = c.GetChildAtPoint(new Point(93, 200));
 
@@ -100,25 +98,34 @@ namespace MediaApp
             }
         }
 
+        // Favorite btn Clicked
         private void Favorite_Click(object sender, EventArgs e) {
             Button button = (Button)sender;
-            var wl_MovieTitle = button.Parent.GetChildAtPoint(new Point(3, 154)).Text;
-            var wl_MovieImage = button.Parent.GetChildAtPoint(new Point(1, 1)).Name;
+            var fav_MovieTitle = button.Parent.GetChildAtPoint(new Point(3, 154)).Text;
+            var fav_MovieImage = button.Parent.GetChildAtPoint(new Point(1, 1)).Name;
 
-            var moviePanel = new PanelComponent(wl_MovieTitle, wl_MovieImage);
-            moviePanel.PushElement(f_flwContainer);
+            pushToPanel(fav_MovieTitle, fav_MovieImage, f_flwContainer, "fav");
         }
 
+        // Watch Later btn clicked
         private void WatchLater_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             var wl_MovieTitle = button.Parent.GetChildAtPoint(new Point(3, 154)).Text;
             var wl_MovieImage = button.Parent.GetChildAtPoint(new Point(1, 1)).Name;
 
-            var moviePanel = new PanelComponent(wl_MovieTitle, wl_MovieImage);
-            moviePanel.PushElement(wl_flwContainer);
+            pushToPanel(wl_MovieTitle, wl_MovieImage, wl_flwContainer, "wl");
         }
 
+        // Push Panel to correct place
+        private void pushToPanel(string movieTitle, string movieImage, FlowLayoutPanel pnl, string type)
+        {
+            var moviePanel = new PanelComponent(movieTitle, movieImage);
+            moviePanel.PushElement(pnl);
+
+            // Insert Data into DB
+            InsertData(type, movieTitle, movieImage);
+        }
 
         // Navigation Function
         private void getVisisblePanel(Panel visiblePanel, Panel nvPanelOne, Panel nvPanelTwo)
@@ -129,18 +136,22 @@ namespace MediaApp
         }
 
         // Load in data
-        private void LoadWatchLaterData()
+        private void LoadWatchLaterData(string db)
         {
             MySqlConnection con = new MySqlConnection(MyConnectionString);
             con.Open();
             try
             {
                 MySqlCommand cmd = con.CreateCommand();
-                cmd.CommandText = "Select * FROM watchlaterdb";
-                MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
-                DataSet ds = new DataSet();
-                adap.Fill(ds);
-                
+                cmd.CommandText = "Select * FROM " + db;
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var moviePanel = new PanelComponent(reader[1].ToString(), reader[2].ToString());
+                        moviePanel.PushElement(wl_flwContainer);
+                    }
+                }
             }
             catch (Exception)
             {
@@ -156,19 +167,23 @@ namespace MediaApp
         }
 
         // Insert Data
-        private void InsertData()
+        private void InsertData(string type, string movieTitle, string movieImage)
         {
             MySqlConnection con = new MySqlConnection(MyConnectionString);
             con.Open();
             try
             {
                 MySqlCommand cmd = con.CreateCommand();
-                cmd.CommandText = "INSERT INTO watchlaterdb(MovieID,MovieTitle,MovieImageLink)VALUES(@MovieID,@MovieTitle,@MovieImageLink)";
+                if (type == "wl")
+                {
+                    cmd.CommandText = "INSERT INTO watchlaterdb(MovieTitle,MovieImageLink)VALUES(@MovieTitle,@MovieImageLink)";
+                }
+                else if (type == "fav") {
+                    cmd.CommandText = "INSERT INTO favoritemoviedb(MovieTitle,MovieImageLink)VALUES(@MovieTitle,@MovieImageLink)";
+                }
 
-                cmd.Parameters.AddWithValue("@MovieID", 3);
-                cmd.Parameters.AddWithValue("@MovieTitle", "test");
-                cmd.Parameters.AddWithValue("@MovieImageLink", "/123abc");
-
+                cmd.Parameters.AddWithValue("@MovieTitle", movieTitle);
+                cmd.Parameters.AddWithValue("@MovieImageLink", movieImage);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)

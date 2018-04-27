@@ -71,18 +71,6 @@ namespace MediaApp
         {
             pageAddingTo.Controls.Add(this.basePanel);
         }
-
-        //private void WatchLater_Click(object sender, EventArgs e)
-        //{
-        //    Button button = (Button)sender;
-        //    var wl_MovieTitle = button.Parent.GetChildAtPoint(new Point(3, 154)).Text;
-        //    var wl_MovieImage = button.Parent.GetChildAtPoint(new Point(1, 1)).Name;
-
-        //    var moviePanel = new PanelComponent(wl_MovieTitle, wl_MovieImage);
-        //    //moviePanel.PushElement();
-
-        //    Debug.WriteLine(wl_MovieImage);
-        //}
         #endregion
     }
 }

@@ -249,13 +249,13 @@
             this.pnlWatchLater.Controls.Add(this.wl_flwContainer);
             this.pnlWatchLater.Location = new System.Drawing.Point(168, 0);
             this.pnlWatchLater.Name = "pnlWatchLater";
-            this.pnlWatchLater.Size = new System.Drawing.Size(617, 519);
+            this.pnlWatchLater.Size = new System.Drawing.Size(636, 519);
             this.pnlWatchLater.TabIndex = 6;
             this.pnlWatchLater.Visible = false;
             // 
             // lblWatchLater
             // 
-            this.lblWatchLater.Location = new System.Drawing.Point(238, 9);
+            this.lblWatchLater.Location = new System.Drawing.Point(238, 17);
             this.lblWatchLater.Name = "lblWatchLater";
             this.lblWatchLater.Size = new System.Drawing.Size(140, 26);
             this.lblWatchLater.TabIndex = 5;
@@ -268,7 +268,7 @@
             this.wl_flwContainer.Location = new System.Drawing.Point(6, 63);
             this.wl_flwContainer.Name = "wl_flwContainer";
             this.wl_flwContainer.Padding = new System.Windows.Forms.Padding(6);
-            this.wl_flwContainer.Size = new System.Drawing.Size(608, 449);
+            this.wl_flwContainer.Size = new System.Drawing.Size(627, 449);
             this.wl_flwContainer.TabIndex = 6;
             // 
             // panel2
@@ -332,14 +332,14 @@
             this.pnlFavoriteMovies.Controls.Add(this.label1);
             this.pnlFavoriteMovies.Location = new System.Drawing.Point(169, 0);
             this.pnlFavoriteMovies.Name = "pnlFavoriteMovies";
-            this.pnlFavoriteMovies.Size = new System.Drawing.Size(616, 522);
+            this.pnlFavoriteMovies.Size = new System.Drawing.Size(635, 522);
             this.pnlFavoriteMovies.TabIndex = 7;
             // 
             // f_flwContainer
             // 
             this.f_flwContainer.Location = new System.Drawing.Point(5, 62);
             this.f_flwContainer.Name = "f_flwContainer";
-            this.f_flwContainer.Size = new System.Drawing.Size(608, 454);
+            this.f_flwContainer.Size = new System.Drawing.Size(627, 454);
             this.f_flwContainer.TabIndex = 6;
             // 
             // label1
@@ -357,9 +357,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(808, 522);
             this.Controls.Add(this.pnlNavigation);
+            this.Controls.Add(this.pnlWatchLater);
             this.Controls.Add(this.pnlFavoriteMovies);
             this.Controls.Add(this.pnlSearch);
-            this.Controls.Add(this.pnlWatchLater);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(120)))), ((int)(((byte)(138)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
