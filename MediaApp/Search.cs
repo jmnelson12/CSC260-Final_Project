@@ -21,6 +21,11 @@ namespace MediaApp
         public List<object> results;
 
         #region constructors
+        public Search()
+        {
+            this.searchTerm = "";
+            RunAsync(this.searchTerm).GetAwaiter().GetResult();
+        }
         public Search(string term)
         {
             this.searchTerm = term;

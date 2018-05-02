@@ -17,7 +17,6 @@ namespace MediaApp
         Button btnWatchLater = new Button();
         Button btnFavorite = new Button();
         Button btnRemove = new Button();
-        int count = 0;
 
         #region Contructors
         public PanelComponent(string titleOfMovie, string movieImage, bool type)
@@ -25,7 +24,6 @@ namespace MediaApp
             var margin = this.basePanel.Margin;
             margin.All = 8;
             this.basePanel.Margin = margin;      
-            count++;
 
             // Base Panel
             this.basePanel.Size = new Size(178, 239);
