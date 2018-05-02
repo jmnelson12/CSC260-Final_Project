@@ -12,7 +12,7 @@ namespace MediaApp
 {
     class Search
     {
-        public string searchterm { get; set; }
+        public string searchTerm { get; set; }
         private const string _APIKEY = "e7f452352c2360b97be05ea336f105f4";
         private const string _SEARCHURL = "https://api.themoviedb.org/3/search/movie?api_key=" + _APIKEY;
         static HttpClient client = new HttpClient();            
@@ -21,15 +21,9 @@ namespace MediaApp
         public List<object> results;
 
         #region constructors
-        public Search()
-        {
-            this.searchterm = "";
-            RunAsync("").GetAwaiter().GetResult();
-        }
-
         public Search(string term)
         {
-            this.searchterm = term;
+            this.searchTerm = term;
             RunAsync(term).GetAwaiter().GetResult();
         }
         #endregion
@@ -47,7 +41,7 @@ namespace MediaApp
             try
             {
                 // get the products
-                Product product = await GetProductAsync(_SEARCHURL + "&query=" + searchterm);        
+                Product product = await GetProductAsync(_SEARCHURL + "&query=" + searchTerm);        
                 SetMovie(product);
                 product = null;
                 searchTerm = null;
