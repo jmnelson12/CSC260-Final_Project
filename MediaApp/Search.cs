@@ -15,7 +15,7 @@ namespace MediaApp
         public string searchterm { get; set; }
         private const string _APIKEY = "e7f452352c2360b97be05ea336f105f4";
         private const string _SEARCHURL = "https://api.themoviedb.org/3/search/movie?api_key=" + _APIKEY;
-        static HttpClient client = new HttpClient();
+        static HttpClient client = new HttpClient();            
 
         public int total_results { get; set; }
         public List<object> results;
@@ -39,7 +39,7 @@ namespace MediaApp
         // Run Task
         public async Task RunAsync(string searchTerm)
         {
-            client.BaseAddress = new Uri("https://api.themoviedb.org/3/search/movie?api_key=");
+            //client.BaseAddress = new Uri("https://api.themoviedb.org/3/search/movie?api_key=");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

@@ -55,6 +55,9 @@ namespace MediaApp
         {
             if (e.KeyData == Keys.Enter)
             {
+                // Clear Panel
+                s_flwContainer.Controls.Clear();
+
                 // Declarations
                 var searchValue = s_txtSearch.Text;
                 var searchMovie = new Search(searchValue);
@@ -75,16 +78,15 @@ namespace MediaApp
                     moviePanel.PushElement(s_flwContainer);
                 }
                 addBtnFunctionality();
+
+                searchMovie = null;
+                s_txtSearch.Text = null;
+                totalResults = 0;
+                eachMovie = null;
+                movie = null;                
             }
         }
 
-        //private async void s_txtSearch_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyData == Keys.Enter)
-        //    {
-
-        //    }
-        //}
         #endregion
 
         #region Methods
