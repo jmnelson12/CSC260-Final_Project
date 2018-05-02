@@ -42,6 +42,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.s_txtSearch = new System.Windows.Forms.TextBox();
             this.pnlWatchLater = new System.Windows.Forms.Panel();
             this.lblWatchLater = new System.Windows.Forms.Label();
@@ -170,6 +171,7 @@
             // 
             this.s_flwContainer.AutoScroll = true;
             this.s_flwContainer.Controls.Add(this.panel1);
+            this.s_flwContainer.Controls.Add(this.richTextBox1);
             this.s_flwContainer.Location = new System.Drawing.Point(0, 69);
             this.s_flwContainer.Name = "s_flwContainer";
             this.s_flwContainer.Padding = new System.Windows.Forms.Padding(10);
@@ -231,6 +233,15 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(13, 268);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(594, 394);
+            this.richTextBox1.TabIndex = 9;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.Visible = false;
+            // 
             // s_txtSearch
             // 
             this.s_txtSearch.BackColor = System.Drawing.SystemColors.Control;
@@ -255,9 +266,10 @@
             // 
             // lblWatchLater
             // 
-            this.lblWatchLater.Location = new System.Drawing.Point(238, 17);
+            this.lblWatchLater.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWatchLater.Location = new System.Drawing.Point(221, 12);
             this.lblWatchLater.Name = "lblWatchLater";
-            this.lblWatchLater.Size = new System.Drawing.Size(140, 26);
+            this.lblWatchLater.Size = new System.Drawing.Size(195, 39);
             this.lblWatchLater.TabIndex = 5;
             this.lblWatchLater.Text = "Watch Later";
             // 
@@ -337,16 +349,19 @@
             // 
             // f_flwContainer
             // 
+            this.f_flwContainer.AutoScroll = true;
             this.f_flwContainer.Location = new System.Drawing.Point(5, 62);
             this.f_flwContainer.Name = "f_flwContainer";
+            this.f_flwContainer.Padding = new System.Windows.Forms.Padding(5);
             this.f_flwContainer.Size = new System.Drawing.Size(627, 454);
             this.f_flwContainer.TabIndex = 6;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(208, 27);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(194, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 29);
+            this.label1.Size = new System.Drawing.Size(246, 47);
             this.label1.TabIndex = 5;
             this.label1.Text = "Favorite Movies";
             // 
@@ -410,6 +425,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.FlowLayoutPanel f_flwContainer;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

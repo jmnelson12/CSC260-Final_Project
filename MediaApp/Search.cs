@@ -48,11 +48,13 @@ namespace MediaApp
             {
                 // get the products
                 Product product = await GetProductAsync(_SEARCHURL + "&query=" + searchterm);        
-                GetMovie(product);
+                SetMovie(product);
+                product = null;
+                searchTerm = null;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                // Add Error Box
+                throw;
             }
         }
 
@@ -70,7 +72,7 @@ namespace MediaApp
         }
 
         // Set Values
-        public void GetMovie(Product product)
+        public void SetMovie(Product product)
         {
             this.total_results = product.Total_Results;
             this.results = product.Results;

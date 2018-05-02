@@ -15,16 +15,14 @@ namespace MediaApp
 {
     public partial class MovieApp : Form
     {
-        private string MyConnectionString = "Server=localhost;Database=csc260-finalproject;Uid=root;persistsecurityinfo=True;SslMode=none";
+        private const string _MYCONNECTIONSTRING = "Server=localhost;Database=csc260-finalproject;Uid=root;persistsecurityinfo=True;SslMode=none";
 
         public MovieApp()
         {
             InitializeComponent();
 
             // Load in movies from db
-            LoadWatchLaterData("watchlaterdb");
-            // LoadInData("watchlater"); CREATE SINGULAR FUNCTION
-            // LoadInData("favorite");
+            LoadInData("moviedb");                       
         }
 
         #region Navigation
@@ -65,7 +63,7 @@ namespace MediaApp
 
                 JObject eachMovie;
                 Movie movie;
-                               
+
                 // Loop through results
                 for (var i = 0; i < totalResults; i++)
                 {
@@ -73,22 +71,63 @@ namespace MediaApp
                     movie = eachMovie.ToObject<Movie>();
 
                     // create panels
-                    var moviePanel = new PanelComponent(movie.Original_Title, BASEIMAGEURL + movie.Poster_Path);                    
-                    moviePanel.PushElement(s_flwContainer);                              
+                    var moviePanel = new PanelComponent(movie.Original_Title, BASEIMAGEURL + movie.Poster_Path, false);
+                    moviePanel.PushElement(s_flwContainer);
                 }
                 addBtnFunctionality();
-                searchMovie = null;
-                searchValue = null;
-            }            
+            }
         }
+
+        //private async void s_txtSearch_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyData == Keys.Enter)
+        //    {
+
+        //    }
+        //}
         #endregion
 
         #region Methods
 
+        // Remove Button Functionality
+        private void addRemoveBtnFunctionality()
+        {
+            // Add functionality to controls in flow container
+            foreach (Control c in f_flwContainer.Controls)
+            {
+                if (c.Name == "basePanel")
+                {
+                    foreach (Control con in c.Controls) {
+                        if (con.Text == "Remove") {
+                            con.Click += new EventHandler(Remove_Click);
+                        }
+                    }
+                }
+            }
+
+            // Add functionality to controls in watch later container
+            foreach (Control c in wl_flwContainer.Controls)
+            {
+                if (c.Name == "basePanel")
+                {
+                    foreach (Control con in c.Controls)
+                    {
+                        if (con.Text == "Remove")
+                        {
+                            con.Click += new EventHandler(Remove_Click);
+                        }
+                    }
+                }
+            }
+        }
+
         // Add functionality to dynamically created buttons
-        private void addBtnFunctionality() {
-            foreach (Control c in s_flwContainer.Controls) {
-                if (c.Name == "basePanel") {
+        private void addBtnFunctionality()
+        {
+            foreach (Control c in s_flwContainer.Controls)
+            {
+                if (c.Name == "basePanel")
+                {
                     var wl_button = c.GetChildAtPoint(new Point(13, 200));
                     var fav_button = c.GetChildAtPoint(new Point(93, 200));
 
@@ -99,11 +138,11 @@ namespace MediaApp
         }
 
         // Favorite btn Clicked
-        private void Favorite_Click(object sender, EventArgs e) {
+        private void Favorite_Click(object sender, EventArgs e)
+        {
             Button button = (Button)sender;
             var fav_MovieTitle = button.Parent.GetChildAtPoint(new Point(3, 154)).Text;
             var fav_MovieImage = button.Parent.GetChildAtPoint(new Point(1, 1)).Name;
-
             pushToPanel(fav_MovieTitle, fav_MovieImage, f_flwContainer, "fav");
         }
 
@@ -117,11 +156,58 @@ namespace MediaApp
             pushToPanel(wl_MovieTitle, wl_MovieImage, wl_flwContainer, "wl");
         }
 
-        // Push Panel to correct place
+        // Remove btn clicked
+        private void Remove_Click(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            var siblings = button.Parent.Controls;
+            string parentPanelName = button.Parent.Parent.Parent.Name;
+            string movieTitle = null;
+            string movieType = null;
+
+            // Get Panel that control is in
+            movieType = (parentPanelName == "pnlFavoriteMovies") ? "fav" : "wl";
+
+            // Get Movie Title
+            foreach (Control c in siblings)
+            {
+                if (c.GetType() == typeof(Label)) {
+                    movieTitle = c.Text;
+                }
+            }
+
+            // Remove Movie from db
+            MySqlConnection con = new MySqlConnection(_MYCONNECTIONSTRING);
+            con.Open();
+            try
+            {
+                MySqlCommand cmd = con.CreateCommand();
+                cmd.CommandText = "DELETE FROM moviedb WHERE MovieTitle='" + movieTitle + "' AND MovieType='" + movieType + "'";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
+
+            // testing
+            button.Parent.Visible = false;
+        }
+
+        // Push Panel to correct location
         private void pushToPanel(string movieTitle, string movieImage, FlowLayoutPanel pnl, string type)
         {
-            var moviePanel = new PanelComponent(movieTitle, movieImage);
+            var moviePanel = new PanelComponent(movieTitle, movieImage, true);
             moviePanel.PushElement(pnl);
+
+            addRemoveBtnFunctionality();
 
             // Insert Data into DB
             InsertData(type, movieTitle, movieImage);
@@ -135,10 +221,10 @@ namespace MediaApp
             nvPanelTwo.Visible = false;
         }
 
-        // Load in data
-        private void LoadWatchLaterData(string db)
+        // Load in data from DB       
+        private void LoadInData(string db)
         {
-            MySqlConnection con = new MySqlConnection(MyConnectionString);
+            MySqlConnection con = new MySqlConnection(_MYCONNECTIONSTRING);
             con.Open();
             try
             {
@@ -148,8 +234,15 @@ namespace MediaApp
                 {
                     while (reader.Read())
                     {
-                        var moviePanel = new PanelComponent(reader[1].ToString(), reader[2].ToString());
-                        moviePanel.PushElement(wl_flwContainer);
+                        var moviePanel = new PanelComponent(reader[1].ToString(), reader[2].ToString(), true);
+                        if (reader[3].ToString() == "wl")
+                        {
+                            moviePanel.PushElement(wl_flwContainer);
+                        }
+                        else if (reader[3].ToString() == "fav")
+                        {
+                            moviePanel.PushElement(f_flwContainer);
+                        }
                     }
                 }
             }
@@ -163,25 +256,21 @@ namespace MediaApp
                 {
                     con.Close();
                 }
-            }            
+            }
+            addRemoveBtnFunctionality();
         }
 
-        // Insert Data
+        // Insert Data into DB
         private void InsertData(string type, string movieTitle, string movieImage)
         {
-            MySqlConnection con = new MySqlConnection(MyConnectionString);
+            MySqlConnection con = new MySqlConnection(_MYCONNECTIONSTRING);
             con.Open();
             try
             {
                 MySqlCommand cmd = con.CreateCommand();
-                if (type == "wl")
-                {
-                    cmd.CommandText = "INSERT INTO watchlaterdb(MovieTitle,MovieImageLink)VALUES(@MovieTitle,@MovieImageLink)";
-                }
-                else if (type == "fav") {
-                    cmd.CommandText = "INSERT INTO favoritemoviedb(MovieTitle,MovieImageLink)VALUES(@MovieTitle,@MovieImageLink)";
-                }
+                cmd.CommandText = "INSERT INTO moviedb(MovieTitle,MovieImageLink,MovieType)VALUES(@MovieTitle,@MovieImageLink,@MovieType)";
 
+                cmd.Parameters.AddWithValue("@MovieType", type == "wl" ? "wl" : "fav");
                 cmd.Parameters.AddWithValue("@MovieTitle", movieTitle);
                 cmd.Parameters.AddWithValue("@MovieImageLink", movieImage);
                 cmd.ExecuteNonQuery();
@@ -194,7 +283,7 @@ namespace MediaApp
             {
                 if (con.State == ConnectionState.Open)
                 {
-                    con.Close();              
+                    con.Close();
                 }
             }
         }

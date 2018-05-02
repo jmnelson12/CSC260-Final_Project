@@ -16,10 +16,11 @@ namespace MediaApp
         Label lblMovieTitle = new Label();
         Button btnWatchLater = new Button();
         Button btnFavorite = new Button();
+        Button btnRemove = new Button();
         int count = 0;
 
         #region Contructors
-        public PanelComponent(string titleOfMovie, string movieImage)
+        public PanelComponent(string titleOfMovie, string movieImage, bool type)
         {
             var margin = this.basePanel.Margin;
             margin.All = 8;
@@ -45,24 +46,34 @@ namespace MediaApp
             this.lblMovieTitle.Font = new Font("Arial", 10);
             this.lblMovieTitle.TextAlign = ContentAlignment.TopCenter;
 
-            // Watch Later Button
-            this.btnWatchLater.Size = new Size(74, 27);
-            this.btnWatchLater.Location = new Point(12, 199);
-            this.btnWatchLater.Text = "WL";
-            this.btnWatchLater.BackColor = Color.LightGray;            
-            //this.btnWatchLater.Click += new EventHandler(WatchLater_Click);
+            if (!type)
+            {
+                // Watch Later Button
+                this.btnWatchLater.Size = new Size(74, 27);
+                this.btnWatchLater.Location = new Point(12, 199);
+                this.btnWatchLater.Text = "WL";
+                this.btnWatchLater.BackColor = Color.LightGray;
 
-            // Favorite Button
-            this.btnFavorite.Size = new Size(74, 27);
-            this.btnFavorite.Location = new Point(92, 199);
-            this.btnFavorite.Text = "Fav";
-            this.btnFavorite.BackColor = Color.LightGray;
+                // Favorite Button
+                this.btnFavorite.Size = new Size(74, 27);
+                this.btnFavorite.Location = new Point(92, 199);
+                this.btnFavorite.Text = "Fav";
+                this.btnFavorite.BackColor = Color.LightGray;
+            }
+            else
+            {
+                this.btnRemove.Size = new Size(85, 27);
+                this.btnRemove.Location = new Point(44, 199);
+                this.btnRemove.Text = "Remove";
+                this.btnRemove.BackColor = Color.LightGray;
+            }
 
             // Add Elements To Base Panel
             this.basePanel.Controls.Add(this.picMovieLogo);
             this.basePanel.Controls.Add(this.lblMovieTitle);
             this.basePanel.Controls.Add(this.btnWatchLater);
             this.basePanel.Controls.Add(this.btnFavorite);
+            this.basePanel.Controls.Add(this.btnRemove);
         }
         #endregion
 
